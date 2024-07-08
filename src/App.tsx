@@ -6,7 +6,7 @@ import {
 import HomePage from './pages/home/HomePage';
 import LoginPage from './pages/login/LoginPage';
 import SignupPage from './pages/signup/SignupPage';
-import { AuthProvider } from './lib/context/AuthContext';
+// import { AuthProvider } from './lib/context/AuthContext';
 import AuthOutlet from './pages/AuthOutlet';
 import JournalPage from './pages/journal/JournalPage';
 import AccountPage from './pages/account/AccountPage';
