@@ -1,5 +1,5 @@
-const DEV_URL = "http://127.0.0.1:8000/api/";
-const LIVE_URL_VERCEL = "https://journal-ten-jet.vercel.app/api/";
+// const DEV_URL = "http://127.0.0.1:8000/api/";
+// const LIVE_URL_VERCEL = "https://journal-ten-jet.vercel.app/api/";
 const LIVE_URL_PYTHONANYWHERE = "https://kdk808.pythonanywhere.com/api/";
 
 export const BACKEND_URL = LIVE_URL_PYTHONANYWHERE;
