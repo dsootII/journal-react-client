@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Theme 
       accentColor='gray'
-      grayColor='mauve'
+      grayColor='gray'
       panelBackground='solid'
       appearance='dark'
     >

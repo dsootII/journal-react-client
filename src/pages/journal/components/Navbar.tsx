@@ -1,7 +1,7 @@
 import { useJournalContext } from "../../../lib/context/JournalContext";
 import { useAuthContext } from "../../../lib/context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@radix-ui/themes";
+import { Button, Flex } from "@radix-ui/themes";
 
 
 
@@ -40,24 +40,28 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex w-full justify-end px-3 items-center bg-gradient-to-l from-stone-700 to-stone-800">
-
-      <Button 
-        className="p-2 m-2 hover:shadow-sm bg-stone-200" 
-        variant={"outline"} 
-        onClick={handleNewNoteCreation}
-      >
-        Create New Note
-      </Button>
-      <Button 
-        className="p-2 m-2 hover:shadow-sm bg-stone-200" 
-        variant={"outline"}
-        onClick={() => navigate('/user/account')}
-      >
-        Account
-      </Button>
-      <Button className="p-2 m-2 hover:shadow-sm" onClick={handleLogout}>Logout</Button>
-
-    </div>
+    <Flex gap={"3"} justify={'end'} className="w-full justify-end px-4 py-3 items-center">
+    <Button 
+      color="iris"
+      variant={"solid"} 
+      onClick={handleNewNoteCreation}
+    >
+      Create New Note
+    </Button>
+    <Button 
+      color="iris"
+      variant={"solid"}
+      onClick={() => navigate('/user/account')}
+    >
+      Account
+    </Button>
+    <Button 
+      variant="solid"
+      color="gray"
+      onClick={handleLogout}
+    >
+      Logout
+    </Button>
+  </Flex>
   )
 }

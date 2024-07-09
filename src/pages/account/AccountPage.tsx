@@ -75,79 +75,75 @@ export default function AccountPage() {
 
 
   return (
-    <Flex className='h-screen bg-gradient-to-t from-stone-600 to-stone-800' gap={"3"} direction={'column'}>
-      <Card>
-        {
-          Object.entries(user).map(
-            entry => (
-              <div><Text><strong>{entry[0]}</strong>: {entry[1]}</Text></div>
-            )
+<Flex className="h-screen bg-gradient-to-t from-gray-600 to-gray-800" gap={"3"} direction={'column'}>
+    <Card variant="ghost">
+      {
+        Object.entries(user).map(
+          entry => (
+            <div key={entry[0]}><Text><strong>{entry[0]}</strong>: {entry[1]}</Text></div>
           )
-        }
-      </Card>   
-      <Card>
-        <Button color='jade' onClick={() => setIsModalOn(true)}>+ Add Container</Button>
-        <Button color='red' className='ml-2' onClick={() => toggleDeleteSelectedContainer(true)}>Delete Selected Container</Button>
-        <Button color='amber' className='ml-2' onClick={() => navigate('/user/journal')}>Go back to Journal</Button>
-        <Modal
-          isModalOn={isModalOn}
-          handleModalOpening={handleModalOpening}
-          newContainerName={newContainerName}
-          setNewContainerName={setNewContainerName}
-        />
-        <Tabs.Root>
-          <Tabs.List>
-            {
-              containers.map(container => (
-                <Tabs.Trigger
-                  key={container.id}
-                  value={container.name}
-                  className="px-2 py-1 rounded-lg mt-2 data-[state=active]:bg-stone-800 data-[state=active]:text-white hover:bg-stone-500 hover:text-white text-black"
-                  onClick={() => {
-                    setSelectedContainerTab(container.id)
-                    containerNameRef.current = container.name
-                  }}
-                >
-                  {container.name}{' '}({container.entries.length})
-                </Tabs.Trigger>
-              ))
-            }
-          </Tabs.List>
+        )
+      }
+    </Card>
+    <Card variant="ghost">
+      <Flex gap={'3'}>
+        <Button color="jade" onClick={() => setIsModalOn(true)}>+ Add Container</Button>
+        <Button color="red" className="ml-2" onClick={() => toggleDeleteSelectedContainer(true)}>Delete Selected Container</Button>
+        <Button color="amber" className="ml-2" onClick={() => navigate('/user/journal')}>Go back to Journal</Button>
+      </Flex>
+      
+      <Modal
+        isModalOn={isModalOn}
+        handleModalOpening={handleModalOpening}
+        newContainerName={newContainerName}
+        setNewContainerName={setNewContainerName}
+      />
+      <Tabs.Root>
+        <Tabs.List color="amber">
           {
             containers.map(container => (
-              <Tabs.Content key={container.id} value={container.name}>
-                <ScrollArea.Root>
-                  <ScrollArea.Viewport
-                    className='border border-gray-600 mt-1 rounded-2xl max-h-80'
-                  >
-                    {
-                      container.entries.map(entry => (
-                        <div
-                          className=' flex justify-start h-10 items-center border border-gray-200 hover:shadow-md hover:font-bold'>
-                          <div onClick={() => handleEntryDeletion(entry)}><TrashIcon  /></div>
-                          <Text className='px-2'>{entry.title}</Text>
-                        </div>
-                      ))
-                    }
-                  </ScrollArea.Viewport>
-                  <ScrollArea.Scrollbar orientation="horizontal">
-                    <ScrollArea.Thumb />
-                  </ScrollArea.Scrollbar>
-                  <ScrollArea.Scrollbar orientation="vertical">
-                    <ScrollArea.Thumb />
-                  </ScrollArea.Scrollbar>
-                  <ScrollArea.Corner />
-                </ScrollArea.Root>
-
-              </Tabs.Content>
+              <Tabs.Trigger
+                key={container.id}
+                value={container.name}
+                className="px-2 py-1 rounded-lg mt-2 data-[state=active]:bg-gray-400 data-[state=active]:text-white hover:bg-gray-500 hover:text-white text-gray shadow-md"
+                onClick={() => {
+                  setSelectedContainerTab(container.id)
+                  containerNameRef.current = container.name
+                }}
+              >
+                {container.name} ({container.entries.length})
+              </Tabs.Trigger>
             ))
           }
-
-
-        </Tabs.Root>
-      </Card>
-
-    </Flex>
+        </Tabs.List>
+        {
+          containers.map(container => (
+            <Tabs.Content key={container.id} value={container.name}>
+              <ScrollArea.Root>
+                <ScrollArea.Viewport className="mt-1 rounded-2xl max-h-80">
+                  {
+                    container.entries.map(entry => (
+                      <div key={entry.id} className="flex justify-start h-10 items-center px-3 hover:shadow-md hover:font-bold">
+                        <div onClick={() => handleEntryDeletion(entry)}><TrashIcon /></div>
+                        <Text className="px-2">{entry.title}</Text>
+                      </div>
+                    ))
+                  }
+                </ScrollArea.Viewport>
+                <ScrollArea.Scrollbar orientation="horizontal">
+                  <ScrollArea.Thumb />
+                </ScrollArea.Scrollbar>
+                <ScrollArea.Scrollbar orientation="vertical">
+                  <ScrollArea.Thumb />
+                </ScrollArea.Scrollbar>
+                <ScrollArea.Corner />
+              </ScrollArea.Root>
+            </Tabs.Content>
+          ))
+        }
+      </Tabs.Root>
+    </Card>
+  </Flex>
   )
 }
 

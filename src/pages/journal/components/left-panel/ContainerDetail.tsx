@@ -44,44 +44,44 @@ export default function ContainerDetail() {
 
 
   return (
-    <div className="h-1/6" >
-
-      {
-        (containerList.length === 0) ?
-          <Card className="h-full bg-stone-400 p-5"><em>You have no containers yet!</em></Card>
-          :
-          <Card className="bg-stone-400 hover:bg-stone-600 h-full border-none rounded-none" onClick={() => toggleChangeContainerName(true)}>
-            <div>
-              <div >
-                {
-                  changeContainerName ?
-                    <div className="flex px-1 items-center justify-end z-10">
-                      <TextField.Root
-                        type="text"
-                        ref={newContainerNameRef}
-                        placeholder={`change container name from '${selectedContainer.name}'`}
-                      />
-                      <div className="flex">
-                        <Button className="rounded-full bg-green-300 hover:shadow-lg mx-1 p-1" onClick={() => { toggleContainerNameChangeDispatchSwitch(true) }}><Tick /></Button>
-                        <Button className="rounded-full bg-red-300 hover:shadow-lg mx-1 p-1" onClick={(e) => {
-                          toggleChangeContainerName(false);
-                          e.stopPropagation();
-                        }}
-                        >
-                          <Cancel />
-                        </Button>
-                      </div>
+<div className="h-1/6 p-4">
+    {
+      (containerList.length === 0) ?
+        <Card className="h-full bg-gray-400 p-5 flex items-center justify-center text-gray-700">
+          <em>You have no containers yet!</em>
+        </Card>
+        :
+        <Card className="bg-gray-400 hover:bg-gray-600 h-full border-none rounded-lg p-4 cursor-pointer" onClick={() => toggleChangeContainerName(true)}>
+          <div className="flex flex-col justify-between h-full">
+            <div className="flex items-center justify-between">
+              {
+                changeContainerName ?
+                  <div className="flex items-center w-full">
+                    <TextField.Root
+                      type="text"
+                      ref={newContainerNameRef}
+                      placeholder={`Change container name from '${selectedContainer.name}'`}
+                      className="flex-grow p-2 rounded border"
+                    />
+                    <div className="flex ml-2">
+                      <Button className="rounded-full bg-green-300 hover:shadow-lg mx-1 p-1" onClick={() => { toggleContainerNameChangeDispatchSwitch(true) }}>
+                        <Tick />
+                      </Button>
+                      <Button className="rounded-full bg-red-300 hover:shadow-lg mx-1 p-1" onClick={(e) => {
+                        toggleChangeContainerName(false);
+                        e.stopPropagation();
+                      }}>
+                        <Cancel />
+                      </Button>
                     </div>
-                    : selectedContainer?.name || "Add containers on Account Page"
-                }
-
-
-              </div>
-              <div>No. of entries: {selectedContainer?.entries?.length || "None yet, start writing :)"}</div>
+                  </div>
+                  : <span className="text-lg font-semibold">{selectedContainer?.name || "Add containers on Account Page"}</span>
+              }
             </div>
-          </Card>
-      }
-
-    </div>
+            <div className="mt-2 text-sm text-gray-300">No. of entries: {selectedContainer?.entries?.length || "None yet, start writing :)"}</div>
+          </div>
+        </Card>
+    }
+  </div>
   )
 }

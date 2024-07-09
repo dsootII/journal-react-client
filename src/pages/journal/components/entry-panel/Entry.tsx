@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ENDPOINTS } from "../../../../lib/config";
 import TitleBox from "./TitleBox";
 import InputBox from "./InputBox";
-import { Button } from "@radix-ui/themes";
+import { Button, Flex } from "@radix-ui/themes";
 
 
 export default function Entry() {
@@ -82,26 +82,31 @@ export default function Entry() {
       togglePerishSwitch(true);
     }
   }
-  // h-screen w-screen flex bg-gradient-to-r from-white to-stone-800
+  // h-screen w-screen flex bg-gradient-to-r from-white to-gray-800
+  // bg-gradient-to-t from-gray-700 to-gray-100
   return (
-    <div className="flex-grow bg-gradient-to-t from-stone-700 to-stone-100 ">
+    <div className="flex-grow  ">
       <TitleBox />
       <InputBox />
       <div className="flex justify-end py-2 pr-5">
-        <div className="flex h-full items-center">
+        <Flex gap={'2'} align={'center'} className="flex h-full items-center">
           <Button
-            className="px-2 mx-1 hover:bg-green-700 h-[35px] rounded"
+            className="px-2 mx-1 hover:bg-green-800 h-[35px] rounded"
             onClick={handleThoughtConclusion}
+            size={'4'}
+            color="iris"
           >
-            Perish
+            Conclude
           </Button>
           <Button
-            className="px-2 mx-1 hover:bg-red-700 h-[35px] rounded"
+            className="px-2 mx-1 hover:bg-red-800 h-[35px] rounded"
             onClick={handlePerish}
+            size={'4'}
+            color="iris"
           >
             Perish
           </Button>
-        </div>
+        </Flex>
       </div>
     </div>
   )

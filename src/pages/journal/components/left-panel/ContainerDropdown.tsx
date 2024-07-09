@@ -14,7 +14,7 @@ export const ContainerDropdown: React.FC<{
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <Button variant="soft" className="bg-stone-100 shadow-lg">All Containers</Button>
+        <Button size={'3'} variant="soft" className="bg-stone-100 shadow-lg">All Containers</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-56">
 

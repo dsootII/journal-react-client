@@ -9,10 +9,12 @@ export default function InputBox () {
 
   return (
     <TextArea
-      className="w-full h-3/4 overflow-visible p-4 bg-stone-100 shadow-xl"
+      className="w-full h-3/4 overflow-visible p-4 bg-gray-100 shadow-xl text-md"
       placeholder="Place your thoughts here."
       value={currentThought}
       onChange={(e) => setCurrentThought(e.target.value)}
+      variant="soft"
+      color="amber"
     />
   )
 }

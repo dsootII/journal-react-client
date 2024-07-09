@@ -54,53 +54,52 @@ export default function LoginPage() {
 
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center bg-gradient-to-r from-white to-stone-800">
-      <div className="flex h-full w-full justify-center items-center align-middle">
+    <div className="h-screen w-screen flex justify-center items-center bg-gradient-to-r from-gray-200 to-gray-800">
+    <div className="flex h-full w-full justify-center items-center align-middle">
+      <Card className="w-[400px] p-6 shadow-lg">
+        <div className="mb-4 flex flex-col">
+          <Text className="font-bold text-xl">Login</Text>
+          <Text className="font-medium text-gray-400">Use this journal to track quests.</Text>
+        </div>
         
-        <Card className="w-[350px]">
-            <div>
-              <Text className='font-bold'>Login</Text>
-              <Text className='font-medium'>Use this journal to track quests.</Text>
+        <form onSubmit={formik.handleSubmit}>
+          <div className="space-y-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="username" className="font-medium">Username</Label>
+              <TextField.Root 
+                id="username" 
+                placeholder="Enter your username..." 
+                onChange={formik.handleChange}
+                value={formik.values.username}
+                className="border p-2 rounded"
+              />
+              {formik.errors.username && formik.touched.username ? (
+                <div className="text-red-500 text-sm">{formik.errors.username}</div>
+              ) : null}
             </div>
-            
-            <form onSubmit={formik.handleSubmit}>
-              <div>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="username">Username</Label>
-                    <TextField.Root 
-                      id="username" 
-                      placeholder="Username..." 
-                      onChange={formik.handleChange}
-                      value={formik.values.username}
-                    />
-                    {formik.errors.username && formik.touched.username ? (
-                      <div className="text-red-500 text-sm">{formik.errors.username}</div>
-                    ) : null}
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="password">Password</Label>
-                    <TextField.Root 
-                      id="password" 
-                      placeholder="Password..." 
-                      type="password"
-                      onChange={formik.handleChange}
-                      value={formik.values.password}
-                    />
-                    {formik.errors.password && formik.touched.password ? (
-                      <div className="text-red-500 text-sm">{formik.errors.password}</div>
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex justify-between">
-                <Button variant="outline">Forgot Password</Button>
-                <Button type="submit">Login</Button>
-              </div>
-            </form>
-          </Card>
-      </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="password" className="font-medium">Password</Label>
+              <TextField.Root 
+                id="password" 
+                placeholder="Enter your password..." 
+                type="password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                className="border p-2 rounded"
+              />
+              {formik.errors.password && formik.touched.password ? (
+                <div className="text-red-500 text-sm">{formik.errors.password}</div>
+              ) : null}
+            </div>
+          </div>
+          
+          <div className="flex justify-center items-center mt-6">
+            {/* <Button variant="outline" className="text-blue-500">Forgot Password?</Button> */}
+            <Button size={"3"} type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Login</Button>
+          </div>
+        </form>
+      </Card>
     </div>
+  </div>
   )
 }
