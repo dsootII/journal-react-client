@@ -1,6 +1,7 @@
+import { Flex } from "@radix-ui/themes";
 import { useJournalContext } from "../../../../lib/context/JournalContext";
 import { Entry } from "../../../../lib/types";
-import { Card, Flex } from "@radix-ui/themes";
+// import { Card, Flex } from "@radix-ui/themes";
 import { ContainerDropdown } from "./ContainerDropdown";
 
 export default function EntryList() {
