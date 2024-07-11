@@ -60,7 +60,7 @@ export default function Entry() {
     const data = {
       title: currentThoughtTitle,
       body: currentThought,
-      container: selectedContainer.id
+      container: selectedContainer.id 
     }
     setDbCallDataConclusion(data);
 

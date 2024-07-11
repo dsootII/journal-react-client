@@ -46,7 +46,7 @@ export const JournalProvider: React.FC<{children: ReactNode}> = ({children}) => 
   const [currentThought, setCurrentThought] = useState('');
   const [currentThoughtTitle, setCurrentThoughtTitle] = useState('');
   const [listUpdated, setListUpdated] = useState(false);
-  const [selectedEntry, setSelectedEntry] = useState<Entry>(containerList[0].entries[0]);
+  const [selectedEntry, setSelectedEntry] = useState<Entry>(defaultEntry);
 
   useEffect(() => {
     // debugger;

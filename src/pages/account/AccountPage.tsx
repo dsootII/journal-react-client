@@ -75,18 +75,20 @@ export default function AccountPage() {
 
 
   return (
-<Flex className="h-screen bg-gradient-to-t from-gray-600 to-gray-800" gap={"3"} direction={'column'}>
+  <Flex className="h-screen w-screen max-h-screen max-w-screen items-center bg-gradient-to-t from-gray-600 to-gray-800" gap={"3"} direction={'column'}>
     <Card variant="ghost">
-      {
-        Object.entries(user).map(
-          entry => (
-            <div key={entry[0]}><Text><strong>{entry[0]}</strong>: {entry[1]}</Text></div>
+      <Flex gap={'2'}>
+        {
+          Object.entries(user).map(
+            entry => (
+              <div key={entry[0]}> <Text><strong>{entry[0]}</strong>: {entry[1]}</Text> </div>
+            )
           )
-        )
-      }
+        }
+      </Flex>
     </Card>
     <Card variant="ghost">
-      <Flex gap={'3'}>
+      <Flex gap={'3'} justify={'center'}>
         <Button color="jade" onClick={() => setIsModalOn(true)}>+ Add Container</Button>
         <Button color="red" className="ml-2" onClick={() => toggleDeleteSelectedContainer(true)}>Delete Selected Container</Button>
         <Button color="amber" className="ml-2" onClick={() => navigate('/user/journal')}>Go back to Journal</Button>
